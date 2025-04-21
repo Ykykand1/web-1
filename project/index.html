@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopfinity - Infinite Choices. One Destination.</title>
+    <link rel="stylesheet" href="/project/index.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">Shopfinity</div>
+          <nav class="nav-menu">
+            <a href="/project/index.html">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Products</a>
+          </nav>
+          <div class="search-login">
+            <div class="search-bar">
+              <input type="text" placeholder="Search for..." />
+            </div>
+            <a href="/project/index2.php" class="login-btn">Log In</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1>Shopfinity</h1>
+        <p class="hero-tagline">"Infinite Choices. One Destination."</p>
+      </section>
+
+      <section class="why-us">
+        <h2>Why Us</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+          consectetur vestibulum orci, in condimentum magna mollis a. Phasellus
+          ut consequat nunc. Aenean rhoncus magna metus, id mattis enim pretium
+          id. Duis vitae sapien lectus. Sed vel libero in nisi efficitur
+          convallis.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="product-heading">Newest Products</h2>
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="/project/leather-shoes-2661249_1920.jpg"
+                alt="Product image"
+              />
+            </div>
+            <div class="product-info">
+              <span class="product-name">Leather Shoes</span>
+              <button class="buy-btn" onclick="clickBtn1()">Buy</button>
+            </div>
+            <p id="warning1" style="color: rgb(182, 52, 52)"></p>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/project/ironing-403074_1920.jpg" alt="Product image" />
+            </div>
+            <div class="product-info">
+              <span class="product-name">Iron</span>
+              <button class="buy-btn" onclick="clickBtn2()">Buy</button>
+            </div>
+            <p id="warning2" style="color: rgb(182, 52, 52)"></p>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="/project/baby-clothes-5749670_1920.jpg"
+                alt="Product image"
+              />
+            </div>
+            <div class="product-info">
+              <span class="product-name">Baby Clothes</span>
+              <button class="buy-btn" onclick="clickBtn3()">Buy</button>
+            </div>
+            <p id="warning3" style="color: rgb(182, 52, 52)"></p>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="/project/best-rolex-watches-8356385_1280.jpg"
+                alt="Product image"
+              />
+            </div>
+            <div class="product-info">
+              <span class="product-name">Watches</span>
+              <button class="buy-btn" onclick="clickBtn()">Buy</button>
+            </div>
+            <p id="warning" style="color: rgb(182, 52, 52)"></p>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/project/car-604019_1920.jpg" alt="Product image" />
+            </div>
+            <div class="product-info">
+              <span class="product-name">Car</span>
+              <button class="buy-btn" onclick="clickBtn4()">Buy</button>
+            </div>
+            <p id="warning4" style="color: rgb(182, 52, 52)"></p>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="/project/ai-generated-8759668_1920.jpg"
+                alt="Product image"
+              />
+            </div>
+            <div class="product-info">
+              <span class="product-name">Parfume</span>
+              <button class="buy-btn" onclick="clickBtn5()">Buy</button>
+            </div>
+            <p id="warning5" style="color: rgb(182, 52, 52)"></p>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image">
+              <img src="/project/apple-1282241_1920.jpg" alt="Product image" />
+            </div>
+            <div class="product-info">
+              <span class="product-name">Laptop</span>
+              <button class="buy-btn" onclick="clickBtn6()">Buy</button>
+            </div>
+            <p id="warning6" style="color: rgb(182, 52, 52)"></p>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="/project/sunglasses-1589229_1920.jpg"
+                alt="Product image"
+              />
+            </div>
+            <div class="product-info">
+              <span class="product-name">Sunglasses</span>
+              <button class="buy-btn" onclick="clickBtn7()">Buy</button>
+            </div>
+            <p id="warning7" style="color: rgb(182, 52, 52)"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function clickBtn() {
+        document.getElementById("warning").innerText =
+          "This item isn't available anymore";
+      }
+
+      function clickBtn1() {
+        document.getElementById("warning1").innerText =
+          "This item isn't available anymore";
+      }
+
+      function clickBtn2() {
+        document.getElementById("warning2").innerText =
+          "This item isn't available anymore";
+      }
+
+      function clickBtn3() {
+        document.getElementById("warning3").innerText =
+          "This item isn't available anymore";
+      }
+
+      function clickBtn4() {
+        document.getElementById("warning4").innerText =
+          "This item isn't available anymore";
+      }
+
+      function clickBtn5() {
+        document.getElementById("warning5").innerText =
+          "This item isn't available anymore";
+      }
+
+      function clickBtn6() {
+        document.getElementById("warning6").innerText =
+          "This item isn't available anymore";
+      }
+
+      function clickBtn7() {
+        document.getElementById("warning7").innerText =
+          "This item isn't available anymore";
+      }
+    </script>
+  </body>
+</html>
