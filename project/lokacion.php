@@ -234,6 +234,49 @@
                 email: "westside@shopfinity.com"
             },
            
+            {
+                id: 3,
+                name: "Shopfinity3",
+                address: "Rruga Ramdan Citaku, Tirane",
+                lat: 41.361314,
+                lng: 19.772360,
+                phone: "+355 68 444 1839",
+                hours: "Mon-Sun: 10am - 10pm",
+                email: "westside@shopfinity.com"
+            },
+
+            {
+                id: 4,
+                name: "Shopfinity4",
+                address: "Rruga Trajan, Durres",
+                lat: 41.323981,
+                lng: 19.451082,
+                phone: "+355 68 444 1839",
+                hours: "Mon-Sun: 10am - 10pm",
+                email: "westside@shopfinity.com"
+            },
+
+            {
+                id: 5,
+                name: "Shopfinity2",
+                address: "Rruga Sadik Zotaj , Vlore",
+                lat: 40.467977,
+                lng: 19.490754,
+                phone: "+355 68 444 1839",
+                hours: "Mon-Sun: 10am - 10pm",
+                email: "westside@shopfinity.com"
+            },
+
+            {
+                id: 2,
+                name: "Shopfinity2",
+                address: "Rruga Rrapo Hekali , Tirane",
+                lat: 41.311962,
+                lng: 19.800243,
+                phone: "+355 68 444 1839",
+                hours: "Mon-Sun: 10am - 10pm",
+                email: "westside@shopfinity.com"
+            },
         ];
         
         
