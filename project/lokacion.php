@@ -268,11 +268,11 @@
             },
 
             {
-                id: 2,
-                name: "Shopfinity2",
-                address: "Rruga Rrapo Hekali , Tirane",
-                lat: 41.311962,
-                lng: 19.800243,
+                id: 6,
+                name: "Shopfinity6",
+                address: "Rruga Cajupi , Vlore",
+                lat: 40.457412,
+                lng: 19.483154,
                 phone: "+355 68 444 1839",
                 hours: "Mon-Sun: 10am - 10pm",
                 email: "westside@shopfinity.com"
