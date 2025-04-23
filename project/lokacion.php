@@ -219,7 +219,7 @@
                 address: "Rruga Elbasanit, Tirane",
                 lat: 41.319593,
                 lng: 19.827023,
-                phone: "+355 68 585 5555",
+                phone: "+355 68 000 0000",
                 hours: "Mon-Sat: 9am - 9pm, Sun: 10am - 6pm",
                 email: "downtown@shopfinity.com"
             },
@@ -229,7 +229,7 @@
                 address: "Rruga Rrapo Hekali , Tirane",
                 lat: 41.311962,
                 lng: 19.800243,
-                phone: "+355 68 444 1839",
+                phone: "+355 68 000 0000",
                 hours: "Mon-Sun: 10am - 10pm",
                 email: "westside@shopfinity.com"
             },
@@ -240,7 +240,7 @@
                 address: "Rruga Ramdan Citaku, Tirane",
                 lat: 41.361314,
                 lng: 19.772360,
-                phone: "+355 68 444 1839",
+                phone: "+355 68 000 0000",
                 hours: "Mon-Sun: 10am - 10pm",
                 email: "westside@shopfinity.com"
             },
@@ -251,18 +251,18 @@
                 address: "Rruga Trajan, Durres",
                 lat: 41.323981,
                 lng: 19.451082,
-                phone: "+355 68 444 1839",
+                phone: "+355 68 000 0000",
                 hours: "Mon-Sun: 10am - 10pm",
                 email: "westside@shopfinity.com"
             },
 
             {
                 id: 5,
-                name: "Shopfinity2",
+                name: "Shopfinity5",
                 address: "Rruga Sadik Zotaj , Vlore",
                 lat: 40.467977,
                 lng: 19.490754,
-                phone: "+355 68 444 1839",
+                phone: "+355 68 000 0000",
                 hours: "Mon-Sun: 10am - 10pm",
                 email: "westside@shopfinity.com"
             },
@@ -270,10 +270,54 @@
             {
                 id: 6,
                 name: "Shopfinity6",
-                address: "Rruga Cajupi , Vlore",
-                lat: 40.457412,
-                lng: 19.483154,
-                phone: "+355 68 444 1839",
+                address: "Rruga Sadik Zotaj , Vlore",
+                lat: 40.456975,
+                lng: 19.487382,
+                phone: "+355 68 000 0000",
+                hours: "Mon-Sun: 10am - 10pm",
+                email: "westside@shopfinity.com"
+            },
+
+            {
+                id: 7,
+                name: "Shopfinity7",
+                address: "Rruga Andrea Skanjeti , Shkoder",
+                lat: 42.070498,
+                lng: 19.524980,
+                phone: "+355 68 000 0000",
+                hours: "Mon-Sun: 10am - 10pm",
+                email: "westside@shopfinity.com"
+            },
+
+            {
+                id: 8,
+                name: "Shopfinity8",
+                address: "Rruga 7 Marsi , Elbasan",
+                lat: 41.119026,
+                lng: 20.079977,
+                phone: "+355 68 000 0000",
+                hours: "Mon-Sun: 10am - 10pm",
+                email: "westside@shopfinity.com"
+            },
+
+            {
+                id: 9,
+                name: "Shopfinity9",
+                address: "Rruga 10 Dhjetori , Korce",
+                lat: 40.616682,
+                lng: 20.779737,
+                phone: "+355 68 000 0000",
+                hours: "Mon-Sun: 10am - 10pm",
+                email: "westside@shopfinity.com"
+            },
+
+            {
+                id: 10,
+                name: "Shopfinity10",
+                address: "Rruga Eduard Mortier 2 , Pogradec",
+                lat: 40.900863,
+                lng: 20.659147,
+                phone: "+355 68 000 0000",
                 hours: "Mon-Sun: 10am - 10pm",
                 email: "westside@shopfinity.com"
             },
