@@ -199,6 +199,62 @@ header {
   background-color: #1464f8;
   color: #ffffff;
 }
+footer {
+  background-color: #1464f8;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.subscription {
+  margin-top: 15px;
+}
+
+.subscription p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.subscription-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.subscription-form input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 250px;
+  font-size: 14px;
+}
+
+.subscription-form button {
+  background-color: #ffffff;
+  color: #1464f8;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.subscription-form button:hover {
+  background-color: #f0f0f0;
+}
+
+.error-email {
+  color: #db3f47;
+  font-size: 14px;
+  padding-top: 5px;
+}
 
 @media (max-width: 768px) {
   .header-content {

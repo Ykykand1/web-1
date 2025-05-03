@@ -212,3 +212,36 @@ main {
   color: #0d4cb3;
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .login-container {
+    margin: 20px;
+    width: auto;
+  }
+
+  .login-header {
+    font-size: 20px;
+  }
+
+  .form-group input {
+    font-size: 14px;
+  }
+
+  .login-button {
+    font-size: 14px;
+  }
+
+  .signup-link {
+    font-size: 12px;
+  }
+}

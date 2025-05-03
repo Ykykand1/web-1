@@ -23,8 +23,8 @@ include("C:/Users/anila/OneDrive/Desktop/web 1/project/lidhja.php");
           <div class="logo">Shopfinity</div>
           <nav class="nav-menu">
             <a href="/project/index.html">Home</a>
-            <a href="#">Services</a>
-            <a href="#">Products</a>
+            <a href="/project/delivery_check.php">Delivery Check</a>
+            <a href="/project/lokacion.php">Stores</a>
           </nav>
           <a href="/project/index.html" class="back-button">← Back</a>
         </div>

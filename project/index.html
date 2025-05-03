@@ -41,11 +41,13 @@
       <section class="why-us">
         <h2>Why Us</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-          consectetur vestibulum orci, in condimentum magna mollis a. Phasellus
-          ut consequat nunc. Aenean rhoncus magna metus, id mattis enim pretium
-          id. Duis vitae sapien lectus. Sed vel libero in nisi efficitur
-          convallis.
+          At ShopInfinity, we’re more than just an online store — we’re your
+          go-to destination for convenience, quality, and unbeatable value. With
+          a wide range of top-rated products, fast and secure checkout, and
+          lightning-fast delivery, we make shopping simple and stress-free. Our
+          customer-first approach means 24/7 support, easy returns, and
+          exclusive deals you won’t find anywhere else. Discover the infinite
+          possibilities of online shopping — only at ShopInfinity.
         </p>
       </section>
 
@@ -157,7 +159,20 @@
         </div>
       </section>
     </main>
-
+    <footer>
+      <div class="footer-container">
+        <p>&copy; 2025 Shopfinity. All rights reserved.</p>
+        <div class="subscription">
+          <p>Subscribe to our newsletter for the latest updates:</p>
+          <form class="subscription-form">
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit">Subscribe</button>
+            <br />
+            <div class="error-email"><p id="check-email"></p></div>
+          </form>
+        </div>
+      </div>
+    </footer>
     <script>
       function clickBtn() {
         document.getElementById("warning").innerText =
@@ -198,6 +213,27 @@
         document.getElementById("warning7").innerText =
           "This item isn't available anymore";
       }
+
+      const emailInput = document.querySelector('input[type="email"]');
+      const submitBtn = document.querySelector('button[type="submit"]');
+      const errorMsg = document.getElementById("check-email");
+
+      submitBtn.addEventListener("click", function (e) {
+        if (!emailInput.value) {
+          e.preventDefault();
+          errorMsg.textContent = "Give your email.";
+        } else if (!isValidEmail(emailInput.value)) {
+          e.preventDefault();
+          errorMsg.textContent = "Please give a valid email.";
+        } else {
+          alert("Thank you for choosing us :) ");
+        }
+
+        function isValidEmail(email) {
+          const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return re.test(email);
+        }
+      });
     </script>
   </body>
 </html>

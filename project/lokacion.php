@@ -146,6 +146,23 @@
             text-align: center;
             color: white;
         }
+
+        .back-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
         
       
         @media (max-width: 768px) {
