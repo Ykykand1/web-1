@@ -199,3 +199,42 @@ header {
   background-color: #1464f8;
   color: #ffffff;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero-tagline {
+    font-size: 18px;
+  }
+
+  .why-us {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .why-us h2 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
