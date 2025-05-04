@@ -47,16 +47,6 @@ include("C:/Users/anila/OneDrive/Desktop/web 1/project/lidhja.php");
               <img src="/project/img_2_eyes_shut.jpeg" alt="eyes_shut" id="eyeicon">
             </div>
 
-            <div class="form-group">
-              <label for="age">Age:</label>
-              <input type="number" id="age" name="age" />
-              <p id="display" style="color: crimson"></p>
-            </div>
-
-            <div class="forgot-password">
-              <a href="#">Forgot password?</a>
-            </div>
-
             <button type="submit" class="login-button" id="check" name="submit">
               Log In
             </button>
@@ -66,15 +56,6 @@ include("C:/Users/anila/OneDrive/Desktop/web 1/project/lidhja.php");
     </main>
 
     <script>
-      document.getElementById("check").addEventListener("click", function (event) {
-        let a = document.getElementById("age");
-        let b = parseInt(a.value);
-        if (b < 18) {
-          event.preventDefault();
-          document.getElementById("display").innerText = "You can't log in";
-        }
-      });
-
       let eyeicon = document.getElementById("eyeicon");
       let fjalekalimi = document.getElementById("password");
 
