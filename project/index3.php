@@ -1,21 +1,21 @@
 
 <?php
 
-// Database connection
+
 $servername = "localhost";
-$username = "root";  // Change this to your database username
-$password = "";      // Change this to your database password
+$username = "root";  
+$password = "";      
 $dbname = "web_database";
 
-// Create connection
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Function to sanitize input data
+
 function sanitize_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -23,15 +23,15 @@ function sanitize_input($data) {
     return $data;
 }
 
-// Check if form is submitted for registration
+
 if (isset($_POST['register'])) {
-    // Get form data
+    
     $username = sanitize_input($_POST['username']);
     $password = sanitize_input($_POST['password']);
     $age = sanitize_input($_POST['age']);
     $email = sanitize_input($_POST['email']);
     
-    // Basic validation
+  
     $error = "";
     
     if (empty($username)) {
@@ -56,7 +56,7 @@ if (isset($_POST['register'])) {
         $error .= "Invalid email format.<br>";
     }
     
-    // Check if username already exists
+   
     $stmt = $conn->prepare("SELECT * FROM sign_up2 WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -66,12 +66,12 @@ if (isset($_POST['register'])) {
         $error .= "Username already exists.<br>";
     }
     
-    // If no errors, insert user into database
+    
     if (empty($error)) {
-        // Hash password
+       
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         
-        // Prepare and execute SQL statement
+        
         $stmt = $conn->prepare("INSERT INTO sign_up2 (username, password, age, email) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssis", $username, $hashed_password, $age, $email);
         
@@ -85,13 +85,12 @@ if (isset($_POST['register'])) {
     }
 }
 
-// Check if form is submitted for login
 if (isset($_POST['login'])) {
-    // Get form data
+   
     $username = sanitize_input($_POST['username']);
     $password = sanitize_input($_POST['password']);
     
-    // Basic validation
+    
     $error = "";
     
     if (empty($username)) {
@@ -102,9 +101,9 @@ if (isset($_POST['login'])) {
         $error .= "Password is required.<br>";
     }
     
-    // If no errors, check credentials
+    
     if (empty($error)) {
-        // Prepare and execute SQL statement
+        
         $stmt = $conn->prepare("SELECT * FROM sign_up2 WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
@@ -113,15 +112,15 @@ if (isset($_POST['login'])) {
         if ($result->num_rows == 1) {
             $user = $result->fetch_assoc();
             
-            // Verify password
+           
             if (password_verify($password, $user['password'])) {
-                // Password is correct, start a session
+                
                 session_start();
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['logged_in'] = true;
                 
-                // Redirect to dashboard or home page
+              
                 header("Location: index.html");
                 exit();
             } else {
@@ -245,7 +244,7 @@ $conn->close();
                         <div class="form-group form-password">
                             <label for="register-password">Password:</label>
                             <input type="password" id="register-password" name="password" required>
-                            <img src="/project/img_2_eyes_shut.jpeg" alt="eyes_shut" id="register-eyeicon">
+                            <img src="/project/photo/img_2_eyes_shut.jpeg" alt="eyes_shut" id="register-eyeicon">
                         </div>
 
                         <div class="form-group">
@@ -254,26 +253,16 @@ $conn->close();
                             <p id="register-display" style="color: crimson"></p>
                         </div>
 
-                        <button type="submit" class="register-button" id="register-check" name="register">
-                            Register
-                        </button>
-                    </form>
-                </div>
-            </div>
+             <button type="submit" class="register-button" id="register-check" name="register">
+             Register
+             </button>
+          </form>
+         </div>
         </div>
+    </div>
     </main>
 
     <script>
-        // Age validation for login
-        document.getElementById("login-check").addEventListener("click", function(event) {
-            let a = document.getElementById("login-age");
-            let b = parseInt(a.value);
-            if (b < 18) {
-                event.preventDefault();
-                document.getElementById("login-display").innerText = "You must be at least 18 years old to log in";
-            }
-        });
-
         // Age validation for registration
         document.getElementById("register-check").addEventListener("click", function(event) {
             let a = document.getElementById("register-age");
@@ -284,20 +273,6 @@ $conn->close();
             }
         });
 
-        // Password toggle for login
-        let loginEyeIcon = document.getElementById("login-eyeicon");
-        let loginPassword = document.getElementById("login-password");
-
-        loginEyeIcon.onclick = function() {
-            if (loginPassword.type == "password") {
-                loginPassword.type = "text";
-                loginEyeIcon.src = "/project/img_eyes_open.png";
-            } else {
-                loginPassword.type = "password";
-                loginEyeIcon.src = "/project/img_2_eyes_shut.jpeg";
-            }
-        };
-
         // Password toggle for registration
         let registerEyeIcon = document.getElementById("register-eyeicon");
         let registerPassword = document.getElementById("register-password");
@@ -305,10 +280,10 @@ $conn->close();
         registerEyeIcon.onclick = function() {
             if (registerPassword.type == "password") {
                 registerPassword.type = "text";
-                registerEyeIcon.src = "/project/img_eyes_open.png";
+                registerEyeIcon.src = "/project/photo/img_eyes_open.png";
             } else {
                 registerPassword.type = "password";
-                registerEyeIcon.src = "/project/img_2_eyes_shut.jpeg";
+                registerEyeIcon.src = "/project/photo/img_2_eyes_shut.jpeg";
             }
         };
     </script>

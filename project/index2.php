@@ -17,42 +17,48 @@ include("C:/Users/anila/OneDrive/Desktop/web 1/project/lidhja.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
   </head>
   <body>
-    <header>
-      <div class="container">
-        <div class="header-content">
-          <div class="logo">Shopfinity</div>
-          <nav class="nav-menu">
-            <a href="/project/index.html">Home</a>
-            <a href="/project/delivery_check.php">Delivery Check</a>
-            <a href="/project/lokacion.php">Stores</a>
-          </nav>
-          <a href="/project/index.html" class="back-button">← Back</a>
+  <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Shopfinity</div>
+                <nav class="nav-menu">
+                    <a href="/project/index.html">Home</a>
+                    <a href="/project/delivery_check.php">Delivery Check</a>
+                    <a href="/project/lokacion.php">Stores</a>
+                </nav>
+                <a href="/project/index.html" class="back-button">← Back</a>
+            </div>
         </div>
-      </div>
     </header>
 
     <main>
-      <div class="login-container">
-        <div class="login-header">Log In</div>
-        <div class="login-form">
-          <form method="post" action="/project/login.php">
-            <div class="form-group">
-              <label for="username">Username:</label>
-              <input type="text" id="username" name="username" required />
-            </div>
+        <div class="container">
+            <div class="login-section">
+                <h2>Login to Your Account</h2>
+                <?php
+                if (!empty($error)) {
+                    echo '<div class="error-message">' . $error . '</div>';
+                }
+                ?>
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                    <div class="form-group">
+                        <label for="login-username">Username:</label>
+                        <input type="text" class="form-control" id="login-username" name="username" required>
+                    </div>
 
-            <div class="form-group form-password">
-              <label for="password">Password:</label>
-              <input type="password" id="password" name="password" required />
-              <img src="/project/img_2_eyes_shut.jpeg" alt="eyes_shut" id="eyeicon">
-            </div>
+                    <div class="form-group form-password">
+                        <label for="login-password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        <img src="/project/photo/img_2_eyes_shut.jpeg" alt="eyes_shut" id="eyeicon">
+                    </div>
 
-            <button type="submit" class="login-button" id="check" name="submit">
-              Log In
-            </button>
-          </form>
+                    <button type="submit" class="login-button" name="login">Login</button>
+                </form>
+                <div class="register-link">
+                    Don't have an account? <a href="registration.php">Register here</a>
+                </div>
+            </div>
         </div>
-      </div>
     </main>
 
     <script>
@@ -62,10 +68,10 @@ include("C:/Users/anila/OneDrive/Desktop/web 1/project/lidhja.php");
       eyeicon.onclick = function () {
         if (fjalekalimi.type == "password") {
           fjalekalimi.type = "text";
-          eyeicon.src = "/project/img_eyes_open.png";
+          eyeicon.src = "/project/photo/img_eyes_open.png";
         } else {
           fjalekalimi.type = "password";
-          eyeicon.src = "/project/img_2_eyes_shut.jpeg";
+          eyeicon.src = "/project/photo/img_2_eyes_shut.jpeg";
         }
       };
     </script>
