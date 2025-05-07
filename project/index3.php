@@ -190,7 +190,7 @@ $conn->close();
             cursor: pointer;
         }
         .login-button, .register-button {
-            background-color: #4CAF50;
+            background-color: #1464f8;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -199,7 +199,7 @@ $conn->close();
             width: 100%;
         }
         .login-button:hover, .register-button:hover {
-            background-color: #45a049;
+            background-color: #042f7e;
         }
     </style>
 </head>

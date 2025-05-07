@@ -22,7 +22,7 @@ body {
 }
 
 header {
-  background-color: #1464f8;
+  background-color: #1665f8;
   padding: 15px 0;
   position: sticky;
   top: 0;
@@ -242,7 +242,7 @@ main {
   cursor: pointer;
 }
 .login-button {
-  background-color: #4caf50;
+  background-color: #1464f8;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -251,7 +251,7 @@ main {
   width: 100%;
 }
 .login-button:hover {
-  background-color: #45a049;
+  background-color: #042f7e;
 }
 .register-link {
   text-align: center;
