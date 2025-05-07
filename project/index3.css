@@ -167,10 +167,16 @@ main {
   .header-content {
     flex-direction: column;
     align-items: flex-start;
+    gap: 1.2rem;
+  }
+
+  .logo {
+    margin: auto;
   }
 
   .nav-menu {
-    flex-direction: column;
+    margin: auto;
+    flex-direction: row;
     gap: 15px;
   }
 

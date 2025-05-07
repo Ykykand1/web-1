@@ -55,7 +55,7 @@ include("C:/Users/anila/OneDrive/Desktop/web 1/project/lidhja.php");
                     <button type="submit" class="login-button" name="login">Login</button>
                 </form>
                 <div class="register-link">
-                    Don't have an account? <a href="registration.php">Register here</a>
+                    Don't have an account? <a href="/project/index3.php">Register here</a>
                 </div>
             </div>
         </div>
