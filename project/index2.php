@@ -1,12 +1,3 @@
-<?php 
-
-include("C:/Users/anila/OneDrive/Desktop/web 1/project/lidhja.php");
-
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
