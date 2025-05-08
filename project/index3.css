@@ -181,6 +181,7 @@ main {
   }
 
   .login-container {
+    padding: 15px 20px;
     margin: 20px;
     width: auto;
   }
@@ -195,5 +196,9 @@ main {
 
   .login-button {
     font-size: 14px;
+  }
+
+  .back-button {
+    margin: auto;
   }
 }

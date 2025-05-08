@@ -274,15 +274,15 @@ footer {
   }
 
   .search-bar input {
-    width: 99.9%;
+    width: 100%;
   }
 
   .hero h1 {
-    font-size: 28px;
+    font-size: 50px;
   }
 
   .hero-tagline {
-    font-size: 18px;
+    font-size: 30px;
   }
 
   .why-us {
