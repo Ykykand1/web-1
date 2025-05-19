@@ -35,18 +35,18 @@
         
         .store-item:hover {
             background-color: #f5f5f5;
-            border-color: #4CAF50;
+            border-color:rgb(57, 125, 156);
         }
         
         .store-item.active {
             background-color: #e8f5e9;
-            border-color: #4CAF50;
+            border-color:rgb(36, 96, 131);
         }
         
         .store-name {
             font-weight: bold;
             font-size: 18px;
-            color: #2E7D32;
+            color:rgb(15, 58, 114);
         }
         
         .store-address {
@@ -85,7 +85,7 @@
         
         .geocoder-button {
             padding: 12px 20px;
-            background-color: #4CAF50;
+            background-color:rgb(33, 94, 143);
             color: white;
             border: none;
             border-radius: 0 4px 4px 0;
@@ -94,7 +94,7 @@
         }
         
         .geocoder-button:hover {
-            background-color: #388E3C;
+            background-color:rgb(18, 47, 100);
         }
         
         .leaflet-popup-content {
@@ -290,50 +290,6 @@
                 address: "Rruga Sadik Zotaj , Vlore",
                 lat: 40.456975,
                 lng: 19.487382,
-                phone: "+355 68 000 0000",
-                hours: "Mon-Sun: 10am - 10pm",
-                email: "westside@shopfinity.com"
-            },
-
-            {
-                id: 7,
-                name: "Shopfinity7",
-                address: "Rruga Andrea Skanjeti , Shkoder",
-                lat: 42.070498,
-                lng: 19.524980,
-                phone: "+355 68 000 0000",
-                hours: "Mon-Sun: 10am - 10pm",
-                email: "westside@shopfinity.com"
-            },
-
-            {
-                id: 8,
-                name: "Shopfinity8",
-                address: "Rruga 7 Marsi , Elbasan",
-                lat: 41.119026,
-                lng: 20.079977,
-                phone: "+355 68 000 0000",
-                hours: "Mon-Sun: 10am - 10pm",
-                email: "westside@shopfinity.com"
-            },
-
-            {
-                id: 9,
-                name: "Shopfinity9",
-                address: "Rruga 10 Dhjetori , Korce",
-                lat: 40.616682,
-                lng: 20.779737,
-                phone: "+355 68 000 0000",
-                hours: "Mon-Sun: 10am - 10pm",
-                email: "westside@shopfinity.com"
-            },
-
-            {
-                id: 10,
-                name: "Shopfinity10",
-                address: "Rruga Eduard Mortier 2 , Pogradec",
-                lat: 40.900863,
-                lng: 20.659147,
                 phone: "+355 68 000 0000",
                 hours: "Mon-Sun: 10am - 10pm",
                 email: "westside@shopfinity.com"
