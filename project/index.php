@@ -1,3 +1,17 @@
+
+<?php
+session_start();
+$show_popup = false;
+
+
+if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
+    $show_popup = true;
+    
+    $_SESSION['login_success'] = false;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,6 +46,15 @@
         </div>
       </div>
     </header>
+
+     <div id="overlay" class="overlay"></div>
+    <div id="loginSuccessPopup" class="popup">
+        <div class="popup-content">
+            <h3>Welcome, <?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'User'; ?>!</h3>
+            <p>You have successfully logged in to your account.</p>
+        </div>
+        <button id="closePopup" class="popup-close">Close</button>
+    </div>
 
     <main class="container">
       <section class="hero">
@@ -244,6 +267,32 @@
           return re.test(email);
         }
       });
+
+       function showLoginPopup() {
+            document.getElementById('overlay').style.display = 'block';
+            const popup = document.getElementById('loginSuccessPopup');
+            popup.classList.add('fade-in');
+            popup.style.display = 'block';
+        }
+        
+        // Close popup when the close button is clicked
+        document.getElementById('closePopup').addEventListener('click', function() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('loginSuccessPopup').style.display = 'none';
+        });
+        
+        // Close popup when clicking outside of it
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('loginSuccessPopup').style.display = 'none';
+        });
+        
+        // Show popup if user just logged in
+        <?php if ($show_popup): ?>
+        window.onload = function() {
+            showLoginPopup();
+        };
+        <?php endif; ?>
     </script>
   </body>
 </html>

@@ -1,21 +1,21 @@
-
 <?php
-
+session_start();
 
 $servername = "localhost";
 $username = "root";  
 $password = "";      
 $dbname = "web_database";
+$port = 3306;
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname , $port);
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-
+// Function to sanitize input
 function sanitize_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -23,17 +23,18 @@ function sanitize_input($data) {
     return $data;
 }
 
+$error = "";
+$success = "";
 
+// Registration handling
 if (isset($_POST['register'])) {
-    
+    // Get form data
     $username = sanitize_input($_POST['username']);
     $password = sanitize_input($_POST['password']);
     $age = sanitize_input($_POST['age']);
     $email = sanitize_input($_POST['email']);
     
-  
-    $error = "";
-    
+    // Validation
     if (empty($username)) {
         $error .= "Username is required.<br>";
     }
@@ -56,86 +57,46 @@ if (isset($_POST['register'])) {
         $error .= "Invalid email format.<br>";
     }
     
-   
+    // Check if username already exists - Fixed error handling
     $stmt = $conn->prepare("SELECT * FROM sign_up2 WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows > 0) {
-        $error .= "Username already exists.<br>";
-    }
-    
-    
-    if (empty($error)) {
-       
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        
-        
-        $stmt = $conn->prepare("INSERT INTO sign_up2 (username, password, age, email) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssis", $username, $hashed_password, $age, $email);
-        
-        if ($stmt->execute()) {
-            $success = "Registration successful! You can now log in.";
-        } else {
-            $error = "Error: " . $stmt->error;
-        }
-        
-        $stmt->close();
-    }
-}
-
-if (isset($_POST['login'])) {
-   
-    $username = sanitize_input($_POST['username']);
-    $password = sanitize_input($_POST['password']);
-    
-    
-    $error = "";
-    
-    if (empty($username)) {
-        $error .= "Username is required.<br>";
-    }
-    
-    if (empty($password)) {
-        $error .= "Password is required.<br>";
-    }
-    
-    
-    if (empty($error)) {
-        
-        $stmt = $conn->prepare("SELECT * FROM sign_up2 WHERE username = ?");
+    if ($stmt) {
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
         
-        if ($result->num_rows == 1) {
-            $user = $result->fetch_assoc();
+        if ($result->num_rows > 0) {
+            $error .= "Username already exists.<br>";
+        }
+        
+        // If no errors, add the user to the database
+        if (empty($error)) {
+            // Hash password
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             
-           
-            if (password_verify($password, $user['password'])) {
+            // Insert user into database
+            $insert_stmt = $conn->prepare("INSERT INTO sign_up2 (username, password, age, email) VALUES (?, ?, ?, ?)");
+            if ($insert_stmt) {
+                $insert_stmt->bind_param("ssis", $username, $hashed_password, $age, $email);
                 
-                session_start();
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
-                $_SESSION['logged_in'] = true;
+                if ($insert_stmt->execute()) {
+                    $success = "Registration successful! You can now <a href='/project/index2.php'>log in</a>.";
+                } else {
+                    $error = "Error: " . $insert_stmt->error;
+                }
                 
-              
-                header("Location: index.html");
-                exit();
+                $insert_stmt->close();
             } else {
-                $error = "Invalid username or password.";
+                $error = "Database error: " . $conn->error;
             }
-        } else {
-            $error = "Invalid username or password.";
         }
         
         $stmt->close();
+    } else {
+        $error = "Database error: " . $conn->error;
     }
 }
 
 $conn->close();
-
 ?>
 
 <!DOCTYPE html>
@@ -143,7 +104,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Register - Shopfinity</title>
+    <title>Register - Shopfinity</title>
     <link rel="stylesheet" href="/project/index3.css">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
@@ -156,13 +117,10 @@ $conn->close();
             max-width: 1200px;
             margin: 0 auto;
         }
-        .form-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .login-section, .register-section {
-            width: 48%;
+        .register-section {
+            width: 100%;
+            max-width: 500px;
+            margin: 30px auto;
             background-color: #f9f9f9;
             padding: 20px;
             border-radius: 5px;
@@ -182,14 +140,14 @@ $conn->close();
         .form-password {
             position: relative;
         }
-        #eyeicon {
+        #register-eyeicon {
             position: absolute;
             right: 10px;
             top: 35px;
             width: 20px;
             cursor: pointer;
         }
-        .login-button, .register-button {
+        .register-button {
             background-color: #1464f8;
             color: white;
             padding: 10px 15px;
@@ -198,7 +156,7 @@ $conn->close();
             cursor: pointer;
             width: 100%;
         }
-        .login-button:hover, .register-button:hover {
+        .register-button:hover {
             background-color: #042f7e;
         }
     </style>
@@ -209,57 +167,60 @@ $conn->close();
             <div class="header-content">
                 <div class="logo">Shopfinity</div>
                 <nav class="nav-menu">
-                    <a href="/project/index.html">Home</a>
+                    <a href="/project/index.php">Home</a>
                     <a href="/project/delivery_check.php">Delivery Check</a>
                     <a href="/project/lokacion.php">Stores</a>
                 </nav>
-                <a href="/project/index.html" class="back-button">← Back</a>
+                <a href="/project/index.php" class="back-button">← Back</a>
             </div>
         </div>
     </header>
 
     <main>
-                <!-- Register Section -->
-                <div class="register-section">
-                    <h2>Register</h2>
-                    <?php
-                    if (isset($error) && isset($_POST['register'])) {
-                        echo '<div class="error-message">' . $error . '</div>';
-                    }
-                    if (isset($success)) {
-                        echo '<div class="success-message">' . $success . '</div>';
-                    }
-                    ?>
-                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                        <div class="form-group">
-                            <label for="register-username">Username:</label>
-                            <input type="text" id="register-username" name="username" required>
-                        </div>
+        <div class="container">
+            <!-- Register Section -->
+            <div class="register-section">
+                <h2>Create a New Account</h2>
+                <?php
+                if (!empty($error)) {
+                    echo '<div class="error-message">' . $error . '</div>';
+                }
+                if (!empty($success)) {
+                    echo '<div class="success-message">' . $success . '</div>';
+                }
+                ?>
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                    <div class="form-group">
+                        <label for="register-username">Username:</label>
+                        <input type="text" class="form-control" id="register-username" name="username" required>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="register-email">Email:</label>
-                            <input type="email" id="register-email" name="email" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="register-email">Email:</label>
+                        <input type="email" class="form-control" id="register-email" name="email" required>
+                    </div>
 
-                        <div class="form-group form-password">
-                            <label for="register-password">Password:</label>
-                            <input type="password" id="register-password" name="password" required>
-                            <img src="/project/photo/img_2_eyes_shut.jpeg" alt="eyes_shut" id="register-eyeicon">
-                        </div>
+                    <div class="form-group form-password">
+                        <label for="register-password">Password:</label>
+                        <input type="password" class="form-control" id="register-password" name="password" required>
+                        <img src="/project/photo/img_2_eyes_shut.jpeg" alt="eyes_shut" id="register-eyeicon">
+                    </div>
 
-                        <div class="form-group">
-                            <label for="register-age">Age:</label>
-                            <input type="number" id="register-age" name="age" required>
-                            <p id="register-display" style="color: crimson"></p>
-                        </div>
+                    <div class="form-group">
+                        <label for="register-age">Age:</label>
+                        <input type="number" class="form-control" id="register-age" name="age" required>
+                        <p id="register-display" style="color: crimson"></p>
+                    </div>
 
-             <button type="submit" class="register-button" id="register-check" name="register">
-             Register
-             </button>
-          </form>
-         </div>
+                    <button type="submit" class="register-button" id="register-check" name="register">
+                        Register
+                    </button>
+                </form>
+                <div class="login-link mt-3 text-center">
+                    Already have an account? <a href="/project/index2.php">Login here</a>
+                </div>
+            </div>
         </div>
-    </div>
     </main>
 
     <script>
