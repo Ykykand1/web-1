@@ -6,8 +6,6 @@
     <title>Stores- Shopfinity</title>
     <link rel="stylesheet" href="/project/index.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     
     <style>
@@ -148,24 +146,24 @@
         }
 
         .back-button {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  padding: 5px 15px;
-  border-radius: 5px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: background-color 0.3s;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        padding: 5px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: background-color 0.3s;
 }
 
-.back-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
+        .back-button:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        }
 
         
       
-        @media (max-width: 768px) {
+        @media (max-width: 778px) {
             .row {
                 flex-direction: column-reverse;
             }
@@ -178,14 +176,15 @@
             }
         }
     </style>
+   
 </head>
 <body>
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">Shopfinity</div>
-                <nav class="nav-menu">
-                    <a href="/project/index.html">Home</a>
+                <nav class="nav-menu breadcrumb">
+                    <a href="/project/index.php">Home</a>
                     <a href="/project/delivery_check.php">Delivery Check</a>
                     <a href="/project/lokacion.php" class="active">Stores</a>
                 </nav>
@@ -195,13 +194,13 @@
     </header>
 
     <main class="container">
-        <h1>Find Our Stores</h1>
+        <h1 class="m-3">Find Our Stores</h1>
         <p>Locate the nearest Shopfinity store in your area. Click on a store for more details.</p>
         
         <div class="geocoder-container">
             <div class="input-group">
-                <input type="text" id="address-input" class="geocoder-input" placeholder="Enter your address or zip code">
-                <button id="geocode-button" class="geocoder-button">Find Nearby Stores</button>
+                <input type="text" id="address-input" class="geocoder-input m-2" placeholder="Enter your address or zip code">
+                <button id="geocode-button" class="geocoder-button m-2">Find Nearby Stores</button>
             </div>
             <div id="error-message"></div>
             <div id="loading-indicator">
