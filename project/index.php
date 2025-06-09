@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 $show_popup = false;
@@ -80,114 +79,90 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
         <div class="product-grid">
           <div class="product-card">
             <div class="product-image">
-              <img
-                src="/project/photo/leather-shoes-2661249_1920.jpg"
-                alt="Product image"
-              />
+              <img src="/project/photo/leather-shoes-2661249_1920.jpg" alt="Product image" />
             </div>
             <div class="product-info">
               <span class="product-name">Leather Shoes</span>
               <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning" style="color: rgb(182, 52, 52)"></p>
+            <p class="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
             <div class="product-image">
-              <img
-                src="/project/photo/ironing-403074_1920.jpg"
-                alt="Product image"
-              />
+              <img src="/project/photo/ironing-403074_1920.jpg" alt="Product image" />
             </div>
             <div class="product-info">
               <span class="product-name">Iron</span>
               <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning" style="color: rgb(182, 52, 52)"></p>
+            <p class="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
             <div class="product-image">
-              <img
-                src="/project/photo/ai-generated-8759668_1920.jpg"
-                alt="Product image"
-              />
+              <img src="/project/photo/ai-generated-8759668_1920.jpg" alt="Product image" />
             </div>
             <div class="product-info">
               <span class="product-name">Perfume</span>
               <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning" style="color: rgb(182, 52, 52)"></p>
+            <p class="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
             <div class="product-image">
-              <img
-                src="/project/photo/apple-1282241_1920.jpg"
-                alt="Product image"
-              />
+              <img src="/project/photo/apple-1282241_1920.jpg" alt="Product image" />
             </div>
             <div class="product-info">
               <span class="product-name">Laptop</span>
               <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning" style="color: rgb(182, 52, 52)"></p>
+            <p class="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
             <div class="product-image">
-              <img
-                src="/project/photo/car-604019_1920.jpg"
-                alt="Product image"
-              />
+              <img src="/project/photo/car-604019_1920.jpg" alt="Product image" />
             </div>
             <div class="product-info">
               <span class="product-name">Car</span>
               <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning" style="color: rgb(182, 52, 52)"></p>
+            <p class="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
             <div class="product-image">
-              <img
-                src="/project/photo/basket-2652620_1920.jpg"
-                alt="Product image"
-              />
+              <img src="/project/photo/basket-2652620_1920.jpg" alt="Product image" />
             </div>
             <div class="product-info">
               <span class="product-name">Basket</span>
               <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning" style="color: rgb(182, 52, 52)"></p>
+            <p class="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
             <div class="product-image">
-              <img
-                src="/project/photo/baby-clothes-5749670_1920.jpg"
-                alt="Product image"
-              />
+              <img src="/project/photo/baby-clothes-5749670_1920.jpg" alt="Product image" />
             </div>
             <div class="product-info">
               <span class="product-name">Baby Clothes</span>
               <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning" style="color: rgb(182, 52, 52)"></p>
+            <p class="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
             <div class="product-image">
-              <img
-                src="/project/photo/sunglasses-1589229_1920.jpg"
-                alt="Product image"
-              />
+              <img src="/project/photo/sunglasses-1589229_1920.jpg" alt="Product image" />
             </div>
             <div class="product-info">
               <span class="product-name">Sunglasses</span>
               <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning" style="color: rgb(182, 52, 52)"></p>
+            <p class="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
         </div>
       </section>
@@ -206,24 +181,24 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
         </div>
       </div>
     </footer>
-    <script>
-  
+    <script>      
       const buttons = document.querySelectorAll(".buy-btn");
-      const warning = document.querySelectorAll("warning");
       const emailInput = document.querySelector('input[type="email"]');
       const submitBtn = document.querySelector('button[type="submit"]');
       const errorMsg = document.getElementById("check-email");
 
-      //butonat qe shfaqin nje mesazh  
-        buttons.forEach(btn =>{
+      // Handle buy button clicks
+      buttons.forEach(btn => {
         btn.addEventListener("click", event => {
-          // gjehet targeti me i afert 
           const productCard = btn.closest('.product-card');
-          const warningElement = productCard.querySelector('#warning');
-          warningElement.textContent = "Ky produkt nuk eshte per momentin ne shitje";
-          btn.remove();
-           });
+          const warningElement = productCard.querySelector('.warning');
+          if (warningElement) {
+            warningElement.textContent = "This product is not currently available for sale";
+            btn.style.backgroundColor = '#ccc';
+            btn.disabled = true;
+          }
         });
+      });
       
 
       //kontrolli i butonit ne submitin e emailit
