@@ -87,9 +87,9 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
             </div>
             <div class="product-info">
               <span class="product-name">Leather Shoes</span>
-              <button class="buy-btn" onclick="clickBtn1()">Buy</button>
+              <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning1" style="color: rgb(182, 52, 52)"></p>
+            <p id="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
@@ -101,9 +101,9 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
             </div>
             <div class="product-info">
               <span class="product-name">Iron</span>
-              <button class="buy-btn" onclick="clickBtn2()">Buy</button>
+              <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning2" style="color: rgb(182, 52, 52)"></p>
+            <p id="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
@@ -115,9 +115,9 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
             </div>
             <div class="product-info">
               <span class="product-name">Perfume</span>
-              <button class="buy-btn" onclick="clickBtn3()">Buy</button>
+              <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning3" style="color: rgb(182, 52, 52)"></p>
+            <p id="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
@@ -129,7 +129,7 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
             </div>
             <div class="product-info">
               <span class="product-name">Laptop</span>
-              <button class="buy-btn" onclick="clickBtn()">Buy</button>
+              <button class="buy-btn">Buy</button>
             </div>
             <p id="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
@@ -143,9 +143,9 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
             </div>
             <div class="product-info">
               <span class="product-name">Car</span>
-              <button class="buy-btn" onclick="clickBtn4()">Buy</button>
+              <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning4" style="color: rgb(182, 52, 52)"></p>
+            <p id="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
@@ -157,9 +157,9 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
             </div>
             <div class="product-info">
               <span class="product-name">Basket</span>
-              <button class="buy-btn" onclick="clickBtn5()">Buy</button>
+              <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning5" style="color: rgb(182, 52, 52)"></p>
+            <p id="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
@@ -171,9 +171,9 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
             </div>
             <div class="product-info">
               <span class="product-name">Baby Clothes</span>
-              <button class="buy-btn" onclick="clickBtn6()">Buy</button>
+              <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning6" style="color: rgb(182, 52, 52)"></p>
+            <p id="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
 
           <div class="product-card">
@@ -185,9 +185,9 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
             </div>
             <div class="product-info">
               <span class="product-name">Sunglasses</span>
-              <button class="buy-btn" onclick="clickBtn7()">Buy</button>
+              <button class="buy-btn">Buy</button>
             </div>
-            <p id="warning7" style="color: rgb(182, 52, 52)"></p>
+            <p id="warning" style="color: rgb(182, 52, 52)"></p>
           </div>
         </div>
       </section>
@@ -207,50 +207,26 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
       </div>
     </footer>
     <script>
-      function clickBtn() {
-        document.getElementById("warning").innerText =
-          "This item isn't available anymore";
-      }
-
-      function clickBtn1() {
-        document.getElementById("warning1").innerText =
-          "This item isn't available anymore";
-      }
-
-      function clickBtn2() {
-        document.getElementById("warning2").innerText =
-          "This item isn't available anymore";
-      }
-
-      function clickBtn3() {
-        document.getElementById("warning3").innerText =
-          "This item isn't available anymore";
-      }
-
-      function clickBtn4() {
-        document.getElementById("warning4").innerText =
-          "This item isn't available anymore";
-      }
-
-      function clickBtn5() {
-        document.getElementById("warning5").innerText =
-          "This item isn't available anymore";
-      }
-
-      function clickBtn6() {
-        document.getElementById("warning6").innerText =
-          "This item isn't available anymore";
-      }
-
-      function clickBtn7() {
-        document.getElementById("warning7").innerText =
-          "This item isn't available anymore";
-      }
-
+  
+      const buttons = document.querySelectorAll(".buy-btn");
+      const warning = document.querySelectorAll("warning");
       const emailInput = document.querySelector('input[type="email"]');
       const submitBtn = document.querySelector('button[type="submit"]');
       const errorMsg = document.getElementById("check-email");
 
+      //butonat qe shfaqin nje mesazh  
+        buttons.forEach(btn =>{
+        btn.addEventListener("click", event => {
+          // gjehet targeti me i afert 
+          const productCard = btn.closest('.product-card');
+          const warningElement = productCard.querySelector('#warning');
+          warningElement.textContent = "Ky produkt nuk eshte per momentin ne shitje";
+          btn.remove();
+           });
+        });
+      
+
+      //kontrolli i butonit ne submitin e emailit
       submitBtn.addEventListener("click", function (e) {
         if (!emailInput.value) {
           e.preventDefault();
