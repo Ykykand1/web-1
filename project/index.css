@@ -344,6 +344,10 @@ footer {
   z-index: 999;
 }
 
+.warning {
+  margin-left: 10px;
+}
+
 /* Animation for popup */
 @keyframes fadeIn {
   from {

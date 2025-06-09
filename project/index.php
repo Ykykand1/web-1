@@ -193,7 +193,7 @@ if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true) {
           const productCard = btn.closest('.product-card');
           const warningElement = productCard.querySelector('.warning');
           if (warningElement) {
-            warningElement.textContent = "This product is not currently available for sale";
+            warningElement.textContent = "⚠️This product is not currently available for sale";
             btn.style.backgroundColor = '#ccc';
             btn.disabled = true;
           }
